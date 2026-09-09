@@ -24,3 +24,53 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+@keyframes toast-progress { from { transform: scaleX(1); } to { transform: scaleX(0); } } .animate-toast-progress { animation: toast-progress 3.5s linear forwards; }
+
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --app-accent: #18181b;
+  --app-accent-hover: #27272a;
+  --app-accent-foreground: #ffffff;
+}
+
+html[data-accent="zinc"] {
+  --app-accent: #18181b;
+  --app-accent-hover: #27272a;
+}
+
+html[data-accent="blue"] {
+  --app-accent: #2563eb;
+  --app-accent-hover: #1d4ed8;
+}
+
+html[data-accent="green"] {
+  --app-accent: #16a34a;
+  --app-accent-hover: #15803d;
+}
+
+html[data-accent="purple"] {
+  --app-accent: #9333ea;
+  --app-accent-hover: #7e22ce;
+}
+
+html[data-accent="orange"] {
+  --app-accent: #ea580c;
+  --app-accent-hover: #c2410c;
+}
+
+.app-accent-bg {
+  background-color: var(--app-accent);
+  color: var(--app-accent-foreground);
+}
+
+.app-accent-bg:hover {
+  background-color: var(--app-accent-hover);
+}
+
+.app-accent-text {
+  color: var(--app-accent);
+}

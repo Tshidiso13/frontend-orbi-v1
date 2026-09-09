@@ -35,17 +35,17 @@ export type AuthUser = {
   name: string;
 
   username?:
-    | string
-    | null;
+  | string
+  | null;
 
   email: string;
 
   image?:
-    | string
-    | null;
+  | string
+  | null;
 
   role:
-    AdminUserRole;
+  AdminUserRole;
 
   createdAt?: string;
   updatedAt?: string;
@@ -95,14 +95,14 @@ export type UserSettingsResponse = {
     name: string;
 
     username:
-      | string
-      | null;
+    | string
+    | null;
 
     email: string;
 
     image:
-      | string
-      | null;
+    | string
+    | null;
 
     role: string;
 
@@ -113,7 +113,7 @@ export type UserSettingsResponse = {
     theme: ThemeMode;
 
     accentColor:
-      AccentColor;
+    AccentColor;
 
     language: string;
   };
@@ -131,26 +131,26 @@ export type SearchHistoryItem = {
   service: string;
 
   problem:
-    | string
-    | null;
+  | string
+  | null;
 
   location:
-    | string
-    | null;
+  | string
+  | null;
 
   date:
-    | string
-    | null;
+  | string
+  | null;
 
   urgency: string;
 
   latitude:
-    | number
-    | null;
+  | number
+  | null;
 
   longitude:
-    | number
-    | null;
+  | number
+  | null;
 
   resultCount: number;
 
@@ -161,22 +161,22 @@ export type ParsedSearchRequest = {
   service: string;
 
   problem:
-    | string
-    | null;
+  | string
+  | null;
 
   location:
-    | string
-    | null;
+  | string
+  | null;
 
   date:
-    | string
-    | null;
+  | string
+  | null;
 
   urgency:
-    | "low"
-    | "normal"
-    | "high"
-    | "emergency";
+  | "low"
+  | "normal"
+  | "high"
+  | "emergency";
 };
 
 export type BusinessSearchResult = {
@@ -185,77 +185,77 @@ export type BusinessSearchResult = {
   name: string;
 
   description?:
-    | string
-    | null;
+  | string
+  | null;
 
   category: string;
 
   services: string[];
 
   phone?:
-    | string
-    | null;
+  | string
+  | null;
 
   whatsapp?:
-    | string
-    | null;
+  | string
+  | null;
 
   website?:
-    | string
-    | null;
+  | string
+  | null;
 
   mapUrl?:
-    | string
-    | null;
+  | string
+  | null;
 
   openingHours?:
-    | string
-    | null;
+  | string
+  | null;
 
   address?:
-    | string
-    | null;
+  | string
+  | null;
 
   city: string;
 
   latitude?:
-    | number
-    | null;
+  | number
+  | null;
 
   longitude?:
-    | number
-    | null;
+  | number
+  | null;
 
   rating:
-    | number
-    | null;
+  | number
+  | null;
 
   reviewCount:
-    | number
-    | null;
+  | number
+  | null;
 
   verified: boolean;
 
   distance:
-    | number
-    | null;
+  | number
+  | null;
 
   score: number;
 
   source?:
-    | "geoapify";
+  | "geoapify";
 };
 
 export type SearchResponse = {
   query: string;
 
   request:
-    ParsedSearchRequest;
+  ParsedSearchRequest;
 
   totalResults: number;
 
   results:
-    BusinessSearchResult[];
+  BusinessSearchResult[];
 };
 
 /* =========================================================
@@ -266,61 +266,61 @@ export type SavedProvider = {
   id: string;
 
   externalProviderId:
-    string;
+  string;
 
   source: string;
 
   name: string;
 
   description?:
-    | string
-    | null;
+  | string
+  | null;
 
   category?:
-    | string
-    | null;
+  | string
+  | null;
 
   services: string[];
 
   phone?:
-    | string
-    | null;
+  | string
+  | null;
 
   whatsapp?:
-    | string
-    | null;
+  | string
+  | null;
 
   website?:
-    | string
-    | null;
+  | string
+  | null;
 
   mapUrl?:
-    | string
-    | null;
+  | string
+  | null;
 
   address?:
-    | string
-    | null;
+  | string
+  | null;
 
   city?:
-    | string
-    | null;
+  | string
+  | null;
 
   latitude?:
-    | number
-    | null;
+  | number
+  | null;
 
   longitude?:
-    | number
-    | null;
+  | number
+  | null;
 
   rating?:
-    | number
-    | null;
+  | number
+  | null;
 
   reviewCount?:
-    | number
-    | null;
+  | number
+  | null;
 
   verified: boolean;
 
@@ -357,7 +357,7 @@ export type SupportTicket = {
   message: string;
 
   status:
-    SupportTicketStatus;
+  SupportTicketStatus;
 
   createdAt: string;
 
@@ -374,13 +374,13 @@ export type AdminUserRoleUpdateResponse = {
   name: string;
 
   username:
-    | string
-    | null;
+  | string
+  | null;
 
   email: string;
 
   role:
-    AdminUserRole;
+  AdminUserRole;
 };
 
 export type AdminUserRecord = {
@@ -389,17 +389,17 @@ export type AdminUserRecord = {
   name: string;
 
   username:
-    | string
-    | null;
+  | string
+  | null;
 
   email: string;
 
   image:
-    | string
-    | null;
+  | string
+  | null;
 
   role:
-    AdminUserRole;
+  AdminUserRole;
 
   createdAt: string;
 
@@ -407,10 +407,10 @@ export type AdminUserRecord = {
 
   _count: {
     searchHistory:
-      number;
+    number;
 
     savedProviders:
-      number;
+    number;
   };
 };
 
@@ -423,10 +423,10 @@ export type AdminPagination = {
 
 export type AdminUsersResponse = {
   users:
-    AdminUserRecord[];
+  AdminUserRecord[];
 
   pagination:
-    AdminPagination;
+  AdminPagination;
 };
 
 export type AdminDashboardResponse = {
@@ -435,16 +435,16 @@ export type AdminDashboardResponse = {
     usersToday: number;
 
     totalSearches:
-      number;
+    number;
 
     searchesToday:
-      number;
+    number;
 
     totalSavedProviders:
-      number;
+    number;
 
     openSupportTickets:
-      number;
+    number;
   };
 
   topServices: {
@@ -462,17 +462,17 @@ export type AdminDashboardResponse = {
     name: string;
 
     username:
-      | string
-      | null;
+    | string
+    | null;
 
     email: string;
 
     image:
-      | string
-      | null;
+    | string
+    | null;
 
     role:
-      AdminUserRole;
+    AdminUserRole;
 
     createdAt: string;
   }[];
@@ -485,17 +485,17 @@ export type AdminDashboardResponse = {
     service: string;
 
     problem:
-      | string
-      | null;
+    | string
+    | null;
 
     location:
-      | string
-      | null;
+    | string
+    | null;
 
     urgency: string;
 
     resultCount:
-      number;
+    number;
 
     createdAt: string;
 
@@ -518,10 +518,10 @@ export type AdminSearchHistoryItem =
 
 export type AdminSearchesResponse = {
   searches:
-    AdminSearchHistoryItem[];
+  AdminSearchHistoryItem[];
 
   pagination:
-    AdminPagination;
+  AdminPagination;
 };
 
 export type AdminSavedProvider =
@@ -535,10 +535,10 @@ export type AdminSavedProvider =
 
 export type AdminSavedProvidersResponse = {
   providers:
-    AdminSavedProvider[];
+  AdminSavedProvider[];
 
   pagination:
-    AdminPagination;
+  AdminPagination;
 };
 
 export type AdminSystemResponse = {
@@ -548,37 +548,24 @@ export type AdminSystemResponse = {
 
   database: {
     online: boolean;
-
     latencyMs:
       | number
       | null;
-
     error:
       | string
       | null;
   };
 
   services: {
-    ollama: {
+    groq: {
       provider: string;
+      configured: boolean;
+      online: boolean;
 
-      configured:
-        boolean;
-
-      online:
-        boolean;
-
-      baseUrl:
-        string;
-
-      targetModel:
-        string;
+      model: string;
 
       modelAvailable:
         boolean;
-
-      models:
-        string[];
 
       latencyMs:
         | number
@@ -591,12 +578,8 @@ export type AdminSystemResponse = {
 
     geoapify: {
       provider: string;
-
-      configured:
-        boolean;
-
-      online:
-        boolean;
+      configured: boolean;
+      online: boolean;
 
       responseValid?:
         boolean;
@@ -612,12 +595,8 @@ export type AdminSystemResponse = {
 
     email: {
       provider: string;
-
-      configured:
-        boolean;
-
-      online:
-        boolean;
+      configured: boolean;
+      online: boolean;
 
       latencyMs:
         | number
@@ -629,17 +608,13 @@ export type AdminSystemResponse = {
     };
   };
 
-  environment:
-    string;
+  environment: string;
 
-  live:
-    boolean;
+  live: boolean;
 
-  version:
-    string;
+  version: string;
 
-  checkedAt:
-    string;
+  checkedAt: string;
 };
 
 export type AdminMeResponse = {
@@ -649,7 +624,7 @@ export type AdminMeResponse = {
     id: string;
     email: string;
     role:
-      AdminUserRole;
+    AdminUserRole;
   };
 };
 
@@ -697,7 +672,7 @@ export function getStoredUser():
     if (
       !parsed ||
       typeof parsed !==
-        "object"
+      "object"
     ) {
       return null;
     }
@@ -707,11 +682,11 @@ export function getStoredUser():
 
     if (
       typeof user.id !==
-        "string" ||
+      "string" ||
       typeof user.name !==
-        "string" ||
+      "string" ||
       typeof user.email !==
-        "string" ||
+      "string" ||
       !isUserRole(
         user.role
       )
@@ -963,10 +938,10 @@ export const api = {
 
         body:
           body !==
-          undefined
+            undefined
             ? JSON.stringify(
-                body
-              )
+              body
+            )
             : undefined,
       }
     ),
@@ -986,10 +961,10 @@ export const api = {
 
         body:
           body !==
-          undefined
+            undefined
             ? JSON.stringify(
-                body
-              )
+              body
+            )
             : undefined,
       }
     ),
@@ -1009,10 +984,10 @@ export const api = {
 
         body:
           body !==
-          undefined
+            undefined
             ? JSON.stringify(
-                body
-              )
+              body
+            )
             : undefined,
       }
     ),
@@ -1032,10 +1007,10 @@ export const api = {
 
         body:
           body !==
-          undefined
+            undefined
             ? JSON.stringify(
-                body
-              )
+              body
+            )
             : undefined,
       }
     ),
@@ -1185,20 +1160,20 @@ export async function getSettings() {
 export async function updateAppearance(
   payload: {
     theme?:
-      ThemeMode;
+    ThemeMode;
 
     accentColor?:
-      AccentColor;
+    AccentColor;
 
     language?:
-      string;
+    string;
   }
 ) {
   return api.patch<{
     message: string;
 
     appearance:
-      UserSettingsResponse["appearance"];
+    UserSettingsResponse["appearance"];
   }>(
     "/settings/appearance",
     payload,
@@ -1211,7 +1186,7 @@ export async function updateAccountSettings(
     name?: string;
 
     username?:
-      string | null;
+    string | null;
 
     email?: string;
   }
@@ -1220,7 +1195,7 @@ export async function updateAccountSettings(
     message: string;
 
     account:
-      UserSettingsResponse["account"];
+    UserSettingsResponse["account"];
   }>(
     "/settings/account",
     payload,
@@ -1231,17 +1206,17 @@ export async function updateAccountSettings(
 export async function changePassword(
   payload: {
     currentPassword:
-      string;
+    string;
 
     newPassword:
-      string;
+    string;
   }
 ) {
   return api.patch<{
     message: string;
 
     requiresReauthentication:
-      boolean;
+    boolean;
   }>(
     "/settings/security/password",
     payload,
@@ -1286,7 +1261,7 @@ export async function searchBusinesses(
     longitude?: number;
 
     recordHistory?:
-      boolean;
+    boolean;
   }
 ) {
   return api.post<
@@ -1350,7 +1325,7 @@ export async function saveProvider(
     message: string;
 
     provider:
-      SavedProvider;
+    SavedProvider;
   }>(
     "/saved",
     {
@@ -1462,7 +1437,7 @@ export async function contactSupport(
     message: string;
 
     ticketId?:
-      string;
+    string;
   }>(
     "/support/contact",
     payload
@@ -1615,8 +1590,8 @@ export function getAdminSupportTickets(
   const query =
     status
       ? `?status=${encodeURIComponent(
-          status
-        )}`
+        status
+      )}`
       : "";
 
   return api.get<

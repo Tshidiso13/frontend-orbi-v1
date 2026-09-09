@@ -133,7 +133,7 @@ export default function AdminSystemPage() {
           .online,
 
         system.services
-          .ollama
+          .groq
           .online,
 
         system.services
@@ -367,17 +367,16 @@ export default function AdminSystemPage() {
                   justify-center
                   rounded-2xl
 
-                  ${
-                    system.status ===
+                  ${system.status ===
                     "operational"
-                      ? `
+                    ? `
                         bg-emerald-50
                         text-emerald-600
 
                         dark:bg-emerald-950/40
                         dark:text-emerald-300
                       `
-                      : `
+                    : `
                         bg-amber-50
                         text-amber-600
 
@@ -388,7 +387,7 @@ export default function AdminSystemPage() {
                 `}
               >
                 {system.status ===
-                "operational" ? (
+                  "operational" ? (
                   <CheckCircle2
                     size={25}
                   />
@@ -418,7 +417,7 @@ export default function AdminSystemPage() {
                     "
                   >
                     {system.status ===
-                    "operational"
+                      "operational"
                       ? "All systems operational"
                       : "System degraded"}
                   </h2>
@@ -535,32 +534,30 @@ export default function AdminSystemPage() {
 
           <HealthCard
             icon={Bot}
-            name="Ollama AI"
+            name="Groq AI"
             description={
-              system.services
-                .ollama
-                .modelAvailable
-                ? `${system.services.ollama.targetModel} loaded`
-                : `${system.services.ollama.targetModel} not loaded`
+              system.services.groq.modelAvailable
+                ? `${system.services.groq.model} available`
+                : `${system.services.groq.model} unavailable`
             }
             online={
               system.services
-                .ollama
+                .groq
                 .online
             }
             configured={
               system.services
-                .ollama
+                .groq
                 .configured
             }
             latency={
               system.services
-                .ollama
+                .groq
                 .latencyMs
             }
             error={
               system.services
-                .ollama
+                .groq
                 .error
             }
           />
@@ -620,202 +617,185 @@ export default function AdminSystemPage() {
 
         {/* AI DETAILS */}
 
-        <div
-          className="
-            mt-6
-            grid
-            gap-6
+<div
+  className="
+    mt-6
+    grid
+    gap-6
 
-            xl:grid-cols-2
-          "
-        >
-          <Panel
-            title="AI runtime"
-            icon={Bot}
-          >
-            <DataRow
-              label="Provider"
-              value={
-                system.services
-                  .ollama
-                  .provider
-              }
-            />
+    xl:grid-cols-2
+  "
+>
+  <Panel
+    title="AI runtime"
+    icon={Bot}
+  >
+    <DataRow
+      label="Provider"
+      value={
+        system.services
+          .groq
+          .provider
+      }
+    />
 
-            <DataRow
-              label="Status"
-              value={
-                system.services
-                  .ollama
-                  .online
-                  ? "Online"
-                  : "Offline"
-              }
-            />
+    <DataRow
+      label="Status"
+      value={
+        system.services
+          .groq
+          .online
+          ? "Online"
+          : "Offline"
+      }
+    />
 
-            <DataRow
-              label="Target model"
-              value={
-                system.services
-                  .ollama
-                  .targetModel
-              }
-            />
+    <DataRow
+      label="Model"
+      value={
+        system.services
+          .groq
+          .model
+      }
+    />
 
-            <DataRow
-              label="Model available"
-              value={
-                system.services
-                  .ollama
-                  .modelAvailable
-                  ? "Yes"
-                  : "No"
-              }
-            />
+    <DataRow
+      label="Model available"
+      value={
+        system.services
+          .groq
+          .modelAvailable
+          ? "Yes"
+          : "No"
+      }
+    />
 
-            <DataRow
-              label="Installed models"
-              value={
-                system.services
-                  .ollama
-                  .models.length >
-                0
-                  ? system.services
-                      .ollama
-                      .models
-                      .join(", ")
-                  : "None detected"
-              }
-            />
+    <DataRow
+      label="Response time"
+      value={formatLatency(
+        system.services
+          .groq
+          .latencyMs
+      )}
+    />
+  </Panel>
 
-            <DataRow
-              label="Response time"
-              value={formatLatency(
-                system.services
-                  .ollama
-                  .latencyMs
-              )}
-            />
-          </Panel>
+  <Panel
+    title="Runtime"
+    icon={Server}
+  >
+    <DataRow
+      label="Environment"
+      value={
+        system.live
+          ? "LIVE / PRODUCTION"
+          : system.environment.toUpperCase()
+      }
+    />
 
-          {/* RUNTIME */}
+    <DataRow
+      label="Version"
+      value={
+        system.version
+      }
+    />
 
-          <Panel
-            title="Runtime"
-            icon={Server}
-          >
-            <DataRow
-              label="Environment"
-              value={
-                system.live
-                  ? "LIVE / PRODUCTION"
-                  : system.environment.toUpperCase()
-              }
-            />
+    <DataRow
+      label="Overall"
+      value={
+        system.status ===
+        "operational"
+          ? "Operational"
+          : "Degraded"
+      }
+    />
 
-            <DataRow
-              label="Version"
-              value={
-                system.version
-              }
-            />
+    <DataRow
+      label="Healthy services"
+      value={`${healthyServices}/4`}
+    />
 
-            <DataRow
-              label="Overall"
-              value={
-                system.status ===
-                "operational"
-                  ? "Operational"
-                  : "Degraded"
-              }
-            />
-
-            <DataRow
-              label="Healthy services"
-              value={`${healthyServices}/4`}
-            />
-
-            <DataRow
-              label="Last checked"
-              value={formatDateTime(
-                system.checkedAt
-              )}
-            />
-          </Panel>
-        </div>
+    <DataRow
+      label="Last checked"
+      value={formatDateTime(
+        system.checkedAt
+      )}
+    />
+  </Panel>
+</div>
 
         {/* CONNECTION LATENCY */}
 
-        <Panel
-          className="mt-6"
-          title="Connection latency"
-          icon={Gauge}
-        >
-          <div
-            className="
-              mt-5
-              grid
-              gap-4
+<Panel
+  className="mt-6"
+  title="Connection latency"
+  icon={Gauge}
+>
+  <div
+    className="
+      mt-5
+      grid
+      gap-4
 
-              sm:grid-cols-2
-              xl:grid-cols-4
-            "
-          >
-            <LatencyCard
-              title="PostgreSQL"
-              value={
-                system.database
-                  .latencyMs
-              }
-              online={
-                system.database
-                  .online
-              }
-            />
+      sm:grid-cols-2
+      xl:grid-cols-4
+    "
+  >
+    <LatencyCard
+      title="PostgreSQL"
+      value={
+        system.database
+          .latencyMs
+      }
+      online={
+        system.database
+          .online
+      }
+    />
 
-            <LatencyCard
-              title="Ollama"
-              value={
-                system.services
-                  .ollama
-                  .latencyMs
-              }
-              online={
-                system.services
-                  .ollama
-                  .online
-              }
-            />
+    <LatencyCard
+      title="Groq AI"
+      value={
+        system.services
+          .groq
+          .latencyMs
+      }
+      online={
+        system.services
+          .groq
+          .online
+      }
+    />
 
-            <LatencyCard
-              title="Geoapify"
-              value={
-                system.services
-                  .geoapify
-                  .latencyMs
-              }
-              online={
-                system.services
-                  .geoapify
-                  .online
-              }
-            />
+    <LatencyCard
+      title="Geoapify"
+      value={
+        system.services
+          .geoapify
+          .latencyMs
+      }
+      online={
+        system.services
+          .geoapify
+          .online
+      }
+    />
 
-            <LatencyCard
-              title="SMTP"
-              value={
-                system.services
-                  .email
-                  .latencyMs
-              }
-              online={
-                system.services
-                  .email
-                  .online
-              }
-            />
-          </div>
-        </Panel>
+    <LatencyCard
+      title="SMTP"
+      value={
+        system.services
+          .email
+          .latencyMs
+      }
+      online={
+        system.services
+          .email
+          .online
+      }
+    />
+  </div>
+</Panel>
 
         {/* LAST CHECK */}
 
@@ -885,28 +865,28 @@ function HealthCard({
   error,
 }: {
   icon:
-    ComponentType<{
-      size?: number;
-      className?: string;
-    }>;
+  ComponentType<{
+    size?: number;
+    className?: string;
+  }>;
 
   name:
-    string;
+  string;
 
   description:
-    string;
+  string;
 
   online:
-    boolean;
+  boolean;
 
   configured:
-    boolean;
+  boolean;
 
   latency:
-    number | null;
+  number | null;
 
   error:
-    string | null;
+  string | null;
 }) {
   return (
     <section
@@ -1047,10 +1027,10 @@ function HealthBadge({
   configured,
 }: {
   online:
-    boolean;
+  boolean;
 
   configured:
-    boolean;
+  boolean;
 }) {
   if (online) {
     return (
@@ -1120,19 +1100,19 @@ function Panel({
   className = "",
 }: {
   children:
-    React.ReactNode;
+  React.ReactNode;
 
   title:
-    string;
+  string;
 
   icon:
-    ComponentType<{
-      size?: number;
-      className?: string;
-    }>;
+  ComponentType<{
+    size?: number;
+    className?: string;
+  }>;
 
   className?:
-    string;
+  string;
 }) {
   return (
     <section
@@ -1208,10 +1188,10 @@ function DataRow({
   value,
 }: {
   label:
-    string;
+  string;
 
   value:
-    string;
+  string;
 }) {
   return (
     <div
@@ -1266,13 +1246,13 @@ function LatencyCard({
   online,
 }: {
   title:
-    string;
+  string;
 
   value:
-    number | null;
+  number | null;
 
   online:
-    boolean;
+  boolean;
 }) {
   return (
     <div
@@ -1347,10 +1327,10 @@ function InfoBadge({
   value,
 }: {
   label:
-    string;
+  string;
 
   value:
-    string;
+  string;
 }) {
   return (
     <div
@@ -1399,7 +1379,7 @@ function formatLatency(
 ) {
   if (
     typeof value !==
-      "number" ||
+    "number" ||
     !Number.isFinite(
       value
     )
@@ -1542,10 +1522,10 @@ function SystemError({
   retry,
 }: {
   message:
-    string;
+  string;
 
   retry:
-    () => void;
+  () => void;
 }) {
   return (
     <main
